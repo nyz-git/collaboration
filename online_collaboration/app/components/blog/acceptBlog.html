@@ -1,0 +1,18 @@
+<div class="row" ng-repeat="blog in adminCtrl.blogs |orderBy : 'postDate'">
+    <div class="col s7 m6 offset-m3 offset-s3">
+        <div class="card horizontal blue lighten-1 hoverable">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p><b>{{blog.firstName}} {{blog.lastname}} Posted {{blog.blog.title}}</b></p>
+                    <p>created at: {{blog.blog.postDate | date : 'h:mm a, MMM d, y '}}</p>
+                    <p><b>Description:</b> {{blog.blog.description}}</p>
+                </div>
+                <div class="card-action">
+                        <a class="waves-effect waves-light btn col s3 offset-m2 offset-s2 green darken-4 hoverable" ng-click="adminCtrl.approveBlog(blog.blog.blogId)">Approve</a>
+                        <a class="waves-effect waves-light btn col s3 offset-m2 offset-s2 red accent-4 hoverable" ng-click="adminCtrl.disapproveBlog(blog.blog.blogId)">Reject</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- view Blog -->

@@ -1,0 +1,105 @@
+<div class="left-padding s9">
+    <div class="row">
+        <div class="col s9">
+            <marquee><h5 class="red-text text-accent-4">{{message}}! You are logged in as {{user.role}}.</h5></marquee>
+           
+            
+            <hr>
+            <div class="row">
+                <h5><span class="latest teal-text text-darken-4">Latest Blogs(3)</span></h5>
+            </div>
+            <hr>
+            <div class="row" ng-repeat="blog in userCtrl.blogList |orderBy : 'postDate': reverse">
+                <div class="col s10 m10 offset-m1 offset-s1">
+                    <div class="card yellow darken-1 hoverable">
+                        <div class="card-content black-text">
+                            <p>
+                                <div class="row">
+                                    <div>
+                                        <span class="new badge">*</span>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a ng-href="#!/user/viewBlog/{{blog.blog.blogId}}"><span class="card-title teal-text text-darken-4">{{blog.blog.title}}</span></a><br>
+                                    </div>   
+                                </div>
+                                <span class="teal-text text-darken-4">Posted By:</span> <b>{{blog.firstName}} {{blog.lastname}}</b>
+                                <span class="teal-text text-darken-4">On:</span> {{blog.blog.postDate | date : 'h:mm a, MMM d, y '}}
+                                <span class="pull-right">({{blog.blog.likes}} Likes, {{blog.noOfComments}} Comments)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h5><span class="latest teal-text text-darken-4">Latest Forums(3)</span></h5>
+            <hr>
+            <div class="row" ng-repeat="forum in userCtrl.forumList |orderBy : 'createdDate': reverse">
+        <div class="col s10 m10 offset-m1 offset-s1">
+            <div class="card yellow darken-1 hoverable">
+                <div class="card-content black-text">
+                    <div class="row">
+                                    <div>
+                                        <span class="new badge">*</span>
+                                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8">
+                            <div class="row">
+                                <div class="blog-title" ng-if="forum.forumRequest == null">
+                                   <span class="card-title teal-text text-darken-4">{{forum.forum.name}}</span><br>
+                                </div>
+                                <div class="blog-title" ng-if="forum.forumRequest != null">
+                                    <a ng-href="#!/viewForum/{{forum.forum.forumId}}"><span class="card-title teal-text text-darken-4">{{forum.forum.name}}</span></a><br>
+                                </div>
+                            </div>
+                            <span class="teal-text text-darken-4">Created By:</span> <b>{{forum.firstName}} {{forum.lastname}}</b>
+                            <span class="teal-text text-darken-4">On:</span> {{forum.forum.createdDate | date : 'h:mm a, MMM d, y '}}<br>
+                            <a ng-href="#!/forum/members/{{forum.forum.forumId}}" class="teal-text text-darken-4" ng-click="forumCtrl.getForumMember(forum.forum.forumId)"><b>{{forum.noOfMembers}} Members</b></a>
+                        </div>
+                        <div class="col s12 m4">
+                            <button class="waves-effect teal darken-4 waves-light pull-right hoverable" ng-click="userCtrl.sendForumRequest(forum.forum.forumId)" ng-if="forum.forumRequest == null"><i class="material-icons">touch_app</i> Join</button><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="col s3">
+                        <blockquote>
+     <span class="teal-text text-darken-4"><i class="fa fa-circle" aria-hidden="true"></i>Online Friends</span>
+    </blockquote>
+            <ul class="collection">
+                <li class="collection-item avatar" ng-repeat="client in userCtrl.onlineFriends |orderBy : 'userId'">
+                    <img src="assets/img/{{client.profileId}}" alt="" class="circle">
+                    <a href="#!/chat"><span class="title"><b><span class="teal-text text-darken-4">{{client.username}}</span></b></span></a>
+                    <p>{{client.firstName}} {{client.lastName}}
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>
+            <div class="panel panel-primary user-panel">
+                <div class="panel-heading user-head">News</div>
+                <div class="panel-body">
+                    <div class="row" ng-repeat="client in userCtrl.userList |orderBy : 'userId'">
+                        <span ng-if="client.username == user.username"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">YOU</span></b> are now on Phoenix as <b>{{client.username}}</b>.</span>
+                        <span ng-if="client.username != user.username"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">{{client.firstName}} {{client.lastName}}</span></b> is now on Phoenix as <b>{{client.username}}</b>.</span>
+                    </div>
+                    <div class="row" ng-repeat="client in userCtrl.friendList |orderBy : 'userId'">
+                        <span ng-if="client.userDetails.username == user.username"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">YOU</span></b> and <b><span class="teal-text text-darken-4">{{client.friendDetails.username}}</span></b> are now friends.</span>
+                        <span ng-if="client.friendDetails.username == user.username"><i class="material-icons">label_outline</i> <span class="teal-text text-darken-4"><b>{{client.userDetails.username}}</b></span> and <b><span class="teal-text text-darken-4">YOU</span></b> are now friends.</span>
+                        <span ng-if="client.userDetails.username != user.username && client.friendDetails.username != user.username"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">{{client.userDetails.username}}</span></b> and <b><span class="teal-text text-darken-4">{{client.friendDetails.username}}</span></b> are now friends.</span>
+                    </div>
+                    <div class="row" ng-repeat="client in userCtrl.blogList">
+                        <span ng-if="client.firstName == user.firstName"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">YOU</span></b> posted a new blog on <b>{{client.blog.title}}</b>.</span>
+                        <span ng-if="client.firstName != user.firstName"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">{{client.firstName}} {{client.lastname}}</span></b> posted a new blog on <b>{{client.blog.title}}</b>.</span>
+                    </div>
+                    <div class="row" ng-repeat="client in userCtrl.forumList">
+                        <span ng-if="client.firstName == user.firstName"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">YOU</span></b> created new forum <b>{{client.forum.name}}</b>.</span>
+                        <span ng-if="client.firstName != user.firstName"><i class="material-icons">label_outline</i> <b><span class="teal-text text-darken-4">{{client.firstName}} {{client.lastname}}</span></b> created new forum called <b>{{client.forum.name}}</b>.</span>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

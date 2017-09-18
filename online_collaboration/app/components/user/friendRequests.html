@@ -1,0 +1,25 @@
+<div class="left-padding">
+    <div class="row"> <img src="assets/img/client.jpg" class="img-square image" alt="Cinque Terre" width="100" height="100">
+    </div>
+    <div class="row" ng-repeat="request in userCtrl.friendRequest">
+        <div class="col s10 m10 offset-m1 offset-s1">
+            <div class="card-panel blue-grey lighten-4 hoverable">
+                <div class="row valign-wrapper">
+                    <div class="col s1">
+                        <img src="assets/img/{{request.profileId}}" alt="Profile image" class="img-circle materialboxed u-image" height="50" width="50">
+                        <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s5">
+                        <span class="grey-text text-darken-1"><b>{{request.username}}</b></span><br>
+                        <span class="grey-text text-darken-1">Name: {{request.firstName}} {{request.lastName}}</span>,
+                        <span class="grey-text text-darken-1">Role: {{request.role}}</span>
+                    </div>
+                    <div class="col s5">
+                        <a class="waves-effect waves-light col green darken-4 hoverable g-btn frn-btn" ng-click="userCtrl.acceptFriendRequest(request.userId)"><i class="material-icons r-icon">done</i></a>
+                        <a class="waves-effect waves-light col red accent-4 hoverable r-btn frn-btn" ng-click="userCtrl.rejectFriendRequest(request.userId)"><i class="material-icons r-icon">clear</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

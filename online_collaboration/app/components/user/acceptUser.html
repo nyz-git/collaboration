@@ -1,0 +1,27 @@
+<div class="left-padding">
+    <div class="row"> <img src="assets/img/client.jpg" class="img-square image" alt="Cinque Terre" width="100" height="100">
+    </div>
+    <div class="row" ng-repeat="user in adminCtrl.users |orderBy : 'userId'">
+        <div class="col s10 m10 offset-m1 offset-s1">
+            <div class="card horizontal blue-grey lighten-4 hoverable">
+                <div class="card-image u-img">
+                    <img src="assets/img/{{user.profileId}}" width="150" height="150">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content u-info">
+                        <p><b>{{user.firstName}} {{user.lastName}}</b></p>
+                        <p>Registered As: {{user.role}}</p>
+                        <p>Email: {{user.emailId}}</p>
+                        <p>Gender: {{user.gender}}</p>
+                    </div>
+                    <div class="card-action u-btn">
+                        <a class="waves-effect waves-light btn col s5 offset-m1 offset-s1 green darken-4 hoverable" ng-click="adminCtrl.approveUser(user.userId)">Approve</a>
+                        <a class="waves-effect waves-light btn col s5 offset-m1 offset-s1 red accent-4 hoverable" ng-click="adminCtrl.disapproveUser(user.userId)">Reject</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accept user -->

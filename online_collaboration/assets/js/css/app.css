@@ -1,0 +1,41 @@
+.left-padding, footer {
+    padding-left: 300px;
+}
+
+/*
+Min-Width: Refers to everything greater than or equal to the amount given. 
+Max-Width: Refers to everything less than or equal to the amount given.
+*/
+@media only screen and (max-width : 992px) {
+    .left-padding, footer {
+        padding-left: 0;
+    }
+}
+
+.help-block{
+	padding-left: 3rem;
+	color: red-text text-accent-4;
+}
+
+.menubar{
+	position: fixed;
+	margin-top: 64px !important;
+}
+
+.blog-title a:hover {
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.coll{
+	text-transform: uppercase;
+	font-family: 'Freckle Face', cursive;
+}
+
+.menu{
+	color: cyan darken-4;
+}
+
+.body {
+    background-image: url("collaboration3.png");
+}

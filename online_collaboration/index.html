@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Collaboration</title>
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/css/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Freckle+Face" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!--Import materialize.css-->
+    <link href="./assets/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="./assets/css/app.css" rel="stylesheet" />
+
+    <style>
+
+.r-icon{
+    padding-top: 6px;
+}
+
+.f-icon {
+    color:  #ffab40;
+}
+
+blockquote{
+    border-left: 7px solid #fdd835 ;
+}
+
+.g-btn{
+    margin-left: 185px;
+}
+
+.u-chat{
+    color: #459be7;
+}
+
+.s-msg{
+    margin-left: 81px;
+}
+
+.frn-btn{
+    color: gray;
+}
+
+.user-panel{
+  border-color: #004d40;
+}
+
+.panel-primary>.panel-heading{
+    border-color: #004d40;
+    background-color: #004d40;
+    background-image: linear-gradient(to bottom, #004d40 0, #004d40 100%);
+}
+
+.latest{
+    font-family: 'Caveat Brush', cursive;
+}
+
+.u-img{
+    padding-top: 38px;
+    padding-left: 40px;
+    margin-bottom: 35px;
+}
+
+.u-image{
+    margin-top: 16px;
+}
+
+.u-btn{
+    margin-bottom: 17px;
+}
+
+.u-info{
+    margin-left: 50px;
+}
+
+.r-btn{
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.f-icon{
+    padding-top: 13px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.left-padding{
+     min-height: 600px; 
+}
+
+.image{
+    width: 100%;
+    height: 200px;
+}
+
+.left-padding, footer {
+    padding-left: 240px;
+}
+
+.blog-title a:hover {
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/*
+Min-Width: Refers to everything greater than or equal to the amount given. 
+Max-Width: Refers to everything less than or equal to the amount given.
+*/
+@media only screen and (max-width : 992px) {
+    .left-padding, footer {
+        padding-left: 0;
+    }
+}
+
+.side-nav{
+	margin-top: 64px;
+}
+
+.panel{
+    margin-top: 16px;
+}
+
+input[type=text] {
+  width: 100%;
+  border: solid 1px #D4D4D1;
+  transition: .7s;
+  font-size: 1.1em;
+  padding: 0.3em;
+  margin: 0.2em 0;
+}
+
+input[type=text]:focus {
+  -webkit-box-shadow: 0 0 5px 0 rgba(69, 155, 231, .75);
+  -moz-box-shadow: 0 0 5px 0 rgba(69, 155, 231, .75);
+  box-shadow: 0 0 5px 0 rgba(69, 155, 231, .75);
+  border-color: #459be7;
+  outline: none;
+}
+
+.info {
+  float: right;
+}
+
+form:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+button {
+  background: #459be7;
+  color: #FFF;
+  font-weight: 600;
+  padding: .3em 1.9em;
+  border: none;
+  font-size: 1.2em;
+  margin: 0;
+  text-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transition: .7s;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background: #1c82dd;
+}
+
+button:disabled {
+  background-color: #90BFE8;
+  cursor: not-allowed;
+}
+
+.count {
+  font-weight: 300;
+  font-size: 1.35em;
+  color: #CCC;
+  transition: .7s;
+}
+
+.count.danger {
+  color: #a94442;
+  font-weight: 600;
+}
+
+.message time {
+  width: 80px;
+  color: #999;
+  display: block;
+  float: left;
+}
+
+.message {
+  margin: 0;
+}
+
+.message .self {
+  font-weight: 600;
+}
+
+.message span {
+  width: calc(100% - 80px);
+  display: block;
+  float: left;
+  padding-left: 20px;
+  border-left: solid 1px #F1F1F1;
+  padding-bottom: .5em;
+}
+
+
+</style>
+
+
+<script type="text/javascript" src="assets/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="assets/libs/materialize/materialize.min.js"></script>
+<script type="text/javascript" src="assets/libs/bootstrap/bootstrap.js"></script>
+
+<script type="text/javascript" src="assets/libs/angular/angular.js"></script>
+<script type="text/javascript" src="assets/libs/angular/angular-route.js"></script>
+<script type="text/javascript" src="assets/libs/angular/angular-cookies.js"></script>
+<script type="text/javascript" src="assets/libs/angular/sockjs.min.js"></script>
+<script type="text/javascript" src="assets/libs/angular/stomp.min.js"></script>
+<script type="text/javascript" src="assets/libs/angular/lodash.min.js"></script>
+<script type="text/javascript" src="app/app.module.js"></script>
+<script type="text/javascript" src="app/app.routes.js"></script>
+
+<!-- Loading the authentication module -->
+<script src="app/components/authentication/AuthenticationFactory.js"></script>
+<script src="app/components/authentication/authenticationController.js"></script>
+
+<!-- Loading the admin module -->
+<script src="app/components/admin/adminFactory.js"></script>
+<script src="app/components/admin/AdminController.js"></script>
+
+<!-- Loading the user module -->
+<script src="app/components/user/UserFactory.js"></script>
+<script src="app/components/user/UserController.js"></script>
+
+<!-- Loading the blog module -->
+<script src="app/components/blog/BlogFactory.js"></script>
+<script src="app/components/blog/BlogController.js"></script>
+
+<!-- Loading the Blog Comment module -->
+<script src="app/components/blog/BlogCommentFactory.js"></script>
+<script src="app/components/blog/BlogCommentController.js"></script>
+
+<!-- Loading the forum module -->
+<script src="app/components/forum/ForumFactory.js"></script>
+<script src="app/components/forum/ForumController.js"></script>
+
+<!-- Loading the Blog Comment module -->
+<script src="app/components/forum/ForumCommentFactory.js"></script>
+<script src="app/components/forum/ForumCommentController.js"></script>
+
+<!-- Loading the profile upload module -->
+<script src="app/components/upload/UploadFactory.js"></script>
+<script src="app/components/upload/UploadController.js"></script>
+
+<!-- Loading the profile upload module -->
+<script src="app/components/chat/ChatService.js"></script>
+<script src="app/components/chat/ChatController.js"></script>
+
+
+<script type="text/javascript" src="app/components/user/userFactory.js"></script>
+<script type="text/javascript" src="app/components/page/pageController.js"></script>
+<script type="text/javascript" src="app/components/user/userController.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+
+
+</head>
+
+<body ng-app="myApp" class="body latest">
+    <!--
+    <div ng-show="loading">
+        <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    </div>-->
+
+    <!-- navbar will be visible only after the authentication is successful-->
+    <div ng-if="authenticated">
+
+        <div class="navbar-fixed">
+            <nav class="menubar">
+                <div class="nav-wrapper teal darken-4">
+                    <a href="#!/user/home" class="brand-logo left hide-on-med-and-down coll"><img src="assets/img/logo-orange.png" alt="Phoenix" class="img-responsive"></a>
+                    <a href="#!/user/home" class="brand-logo hide-on-large-only coll">Phoenix</a>
+                    <a data-href="#" href="javascript:void(0)" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+                    <a data-href="#" href="javascript:void(0)" data-activates="slide-out" class="side-collapse left hide-on-large-only"><i class="material-icons">low_priority</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#!/user/viewBlog">Blogs</a></li>
+                        <li><a href="#!/viewForums">Forums</a></li>
+                        <li><a href="#!/approvedUsers">Users</a></li>
+                        <li><a href="#!/friendRequests">Friend Requests</a></li>
+                        <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+                    </ul>
+                    <ul class="side-nav pull-right" id="mobile-demo">
+                        <li><a href="#!/user/viewBlog">Blogs</a></li>
+                        <li><a href="#!/viewForums">Forums</a></li>
+                        <li><a href="#!/approvedUsers">Users</a></li>
+                        <li><a href="#!/friendRequests">Friend Requests</a></li>
+                        <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- end of navbar -->
+
+
+
+    <!-- User entire profile will be visible in the sidebar once the user authenticates -->
+    <ul id="slide-out" class="side-nav fixed yellow darken-1" ng-if="authenticated">
+        <li>
+            <div class="userView">
+                <div class="background">
+                    <img ng-src="assets/img/userprofilebg.jpg">
+                </div>
+                <a href="#!/user/home"><img class="circle materialboxed" ng-src="assets/img/{{user.profileId}}"></a>
+                <a href="#!/user/home"><span class="white-text name">{{user.firstName}} {{user.lastName}}</span></a>
+                <a href="#!/user/home"><span class="white-text email">{{user.emailId}}</span></a>
+            </div>
+        </li>
+        <li>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header yellow darken-1"><i class="material-icons">perm_identity</i>Profile</div>
+                    <div class="collapsible-body yellow darken-1">
+                        <ul>
+                            <li><a href="#!" ng-click="getSingleUser(user.userId)"><i class="material-icons">send</i>View Profile</a></li>
+                            <li><a href="#!/editProfile/{{user.userId}}"><i class="material-icons">send</i>Update Profile</a></li>
+                            <li><a href="#!" ng-click="logout()"><i class="material-icons">send</i>Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header yellow darken-1"><i class="material-icons">supervisor_account</i>Users</div>
+                    <div class="collapsible-body yellow darken-1">
+                        <ul>
+                            <li><a href="#!/approvedUsers"><i class="material-icons">send</i>View Users</a></li>
+                            <li><a href="#!/myFriends"><i class="material-icons">send</i>My Friends</a></li>
+                            <li><a href="#!/friendRequests"><i class="material-icons">send</i>Friends Requests</a></li>
+                            <li><a href="#!/admin/pendingUsers" ng-if="user.role == 'ADMIN'"><i class="material-icons">send</i>Approve Users</a></li>
+                            <li><a href="#!/admin/blockUsers" ng-if="user.role == 'ADMIN'"><i class="material-icons">send</i>Block Users</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header yellow darken-1"><i class="material-icons">subject</i>Blog</div>
+                    <div class="collapsible-body yellow darken-1">
+                        <ul>
+                            <li><a href="#!/admin/pendingBlogs" ng-if="user.role == 'ADMIN'"><i class="material-icons">send</i>Pending Blogs</a></li>
+                            <li><a href="#!/user/viewBlog"><i class="material-icons">send</i>View Blogs</a></li>
+                            <li><a href="#!/user/myBlogs" ng-if="user.role == 'USER'"><i class="material-icons">send</i>My Blogs</a></li>
+                            <li><a href="#!/user/createBlog" ng-if="user.role == 'USER'"><i class="material-icons">send</i>Create Blog</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header yellow darken-1"><i class="material-icons">forum</i>Forum</div>
+                    <div class="collapsible-body yellow darken-1">
+                        <ul>
+                            <li><a href="#!/viewForums"><i class="material-icons">send</i>View Forums</a></li>
+                            <li><a href="#!/admin/createForum" ng-if="user.role == 'ADMIN'"><i class="material-icons">send</i>Create Forum</a></li>
+                            <li><a href="#!/admin/myForums" ng-if="user.role == 'ADMIN'"><i class="material-icons">send</i>My Forums</a></li>
+                            <li><a href="#!/user/myForums" ng-if="user.role == 'USER'"><i class="material-icons">send</i>My Forums</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <!--<li>
+            <a href="#!"><i class="material-icons">redeem</i>Events</a></li>
+        <li><a href="#!"><i class="material-icons">work</i>Jobs</a></li>
+        <li><a href="#!"><i class="material-icons">chat</i>Chat</a></li>-->
+        <!--<li><a href="#!" ng-if="authenticated" ng-click="logout()"><i class="material-icons">power_settings_new</i>Logout</a></li>-->
+    </ul>
+    <!-- end of sidebar -->
+
+    <div id="main">
+        <div ng-view></div>
+    </div>
+
+    <div ng-if="authenticated">
+    <footer class="page-footer teal darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s6">
+                    <a href="#!/about">
+                        <h5 class="white-text">About Us</h5>
+                    </a>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">beenhere</i> Quality service.</p>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">compare_arrows</i> Great communication.</p>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">computer</i> Online business.</p>
+                </div>
+                <div class="col l6 s6">
+                    <a href="#!/contact">
+                        <h5 class="white-text">Contact Us</h5>
+                    </a>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">location_on</i> NIIT, Thane, Mumbai</p>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">email</i> niyaz.ahmed@niit.com</p>
+                    <p class="grey-text text-lighten-4"><i class="material-icons">phone</i> +91 9986546551</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017 Copyright @nyz.
+            </div>
+        </div>
+    </footer>
+    <div>
+
+
+
+</body>
+
+</html>

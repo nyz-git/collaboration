@@ -1,0 +1,25 @@
+<div class="left-padding">
+    <div class="row"> <img src="assets/img/forum.png" class="img-square image" alt="Cinque Terre" width="100" height="100">
+    </div>
+    <div class="row" ng-repeat="request in forumCommentCtrl.forumRequests">
+        <div class="col s10 m10 offset-m1 offset-s1">
+            <div class="card-panel blue lighten-2 hoverable">
+                <div class="row valign-wrapper">
+                    <div class="col s1">
+                        <img src="assets/img/male.png" alt="Profile image" class="circle responsive-img">
+                        <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s5">
+                        <span class="blue-text text-darken-3"><b>{{request.username}}</b></span><br>
+                        <span class="blue-text text-darken-3">Name: {{request.firstName}} {{request.lastName}}</span>,
+                        <span class="blue-text text-darken-3">Role: {{request.role}}</span>
+                    </div>
+                    <div class="col s5">
+                        <a class="waves-effect waves-light col green darken-4 hoverable g-btn" ng-click="forumCommentCtrl.approveForumRequest(request.userId)"><i class="material-icons r-icon">done</i></a>
+                        <a class="waves-effect waves-light col red accent-4 hoverable r-btn" ng-click="forumCommentCtrl.disapproveForumRequest(request.userId)"><i class="material-icons r-icon">clear</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

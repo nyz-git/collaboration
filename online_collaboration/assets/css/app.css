@@ -1,0 +1,203 @@
+.help-block{
+	padding-left: 3rem;
+	color: red-text text-accent-4;
+}
+
+.coll{
+	font-family: 'Freckle Face', cursive;
+}
+
+.menu{
+	color: cyan darken-4;
+}
+
+.body {
+    background-image: url("../img/bodybg.jpg");
+		height:100%;
+		min-height:100%;
+}
+.img-circle{
+	border-radius: 0px !important;
+}
+.mkLoginOuterBox{
+  background-color:white;
+  width:350px;
+  margin:30px auto 20px auto;
+  border-radius:6px;
+}
+.mkLoginFormTitle{
+  background-color:#D64541;
+  color:white;
+  padding:10px;
+  font-size:20px;
+  text-transform: uppercase;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 4px solid #888888;
+	text-align: center;
+}
+.mkLoginFormContent{
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-left:1px solid #888888;
+  border-right:1px solid #888888;
+  border-bottom:4px solid #888888;
+  padding:10px;
+  position:relative;
+}
+.mkLoginFormContent .form-horizontal .form-control{
+  border:1px solid #888888;
+  color:#888888;
+}
+.mkLoginFormContent .form-horizontal .input-group-addon{
+  background-color:#888888;
+  border:1px solid #888888;
+  color:white;
+}
+.mkLoginButton, .mkRegistrationBtn button{
+  background-color:#D64541;
+  padding:5px 10px;
+  border-radius:6px;
+  color:white;
+  border:none;
+}
+.mkLoginLogoHeader{
+	padding-top:50px;
+}
+.card-action{
+	position:absolute;
+	bottom: 35px;
+    right: 11px;
+}
+.mkLoginContainer, .mkRegisterContainer{
+  width:100%;
+  text-align:center;
+  background-repeat: repeat;
+  height: 100%;
+  min-height: 100% !important;
+}
+.mkLoginWrapper, .mkRegisterWrapper{
+  width:80%;
+  margin:0 auto;
+  text-align:center;
+  padding-top:0;
+}
+.mkRegisterFormOuterbox{
+  background-color:white;
+  width:80%;
+  text-align: center;
+  border:1px solid #D64541;
+  border-radius:6px;
+  padding:20px;
+  margin: 30px auto 20px auto;
+  position: relative !important;
+}
+.mkRegisterFormSections{
+  margin:10px;
+  color:#888888;
+  text-align:left;
+}
+.mkRegisterFormSections .input-group{
+  border: 1px solid #888888;
+  border-radius:4px;
+}
+.mkRegisterFormSections .input-group-addon{
+  background-color:#888888;
+  color:white;
+}
+.mkRegisterFormInnerBox{
+  width:100%;
+  margin:0 auto;
+  text-align:left !important;
+}
+.mktextAlign{
+  text-align:left !important;
+ 
+}
+
+.mkRegisterFormBody{
+  margin:0 auto;
+  color:#D64541 !important;
+}
+.mkSideMenuContainer{
+  margin-top:52px;
+  position:fixed;
+  width:290px;
+  height:100%;
+  text-align:left;
+  background-color: #888888;
+  color:white;
+}
+.mkNavigation{
+  background-color: #EB6361 !important;
+  color:white !important;
+}
+.mkRegisterFormHeader{
+  color:gray;
+  font-size:23px;
+  border-bottom:1px solid #BFBFBF;
+  text-transform: uppercase;
+  margin-bottom:20px;
+  text-align:center;
+}
+.mkRegisterFormBody .input-field input, .mkLoginFormContent .input-field input{
+  border:1px solid gray !important;
+ padding: 5px 10px;
+width: 84%;
+height: 41px;
+border-radius: 6px;
+color:gray !important;
+}
+.mkRegisterFormBody .input-field label, .mkLoginFormContent .input-field label{
+  padding-left:25px;
+  color:gray !important;
+}
+.mkRegisterFormBody .input-field .active{
+  top:3px !important;
+}
+.mkLoginFormContent .input-field .prefix ~ label{
+  margin-left: 2rem !important;
+}
+.mktextAlign label{
+
+   color:gray !important;
+}
+.mkCustompaddinglabel{
+ padding-left:27px !important;
+}
+.mkRegistrationBtn{
+  background-color:#D64541;
+  padding:5px 10px;
+  border-radius:6px;
+  color:white;
+  border:none;
+}
+.mkRegistrationBtn:disabled{
+  background-color:#D64541 !important;
+  color:gray !important;
+}
+.panel-primary .panel-heading{
+background-color: #D64541 !important;
+background-image: linear-gradient(to bottom, #D64541 0, #D64541 100%) !important;
+border-color: #D64541 !important;
+}
+.user-panel{
+border-color: #D64541 !important;
+}
+.menubar .img-responsive{
+max-width: 69% !important;
+margin-top: 10px !important;
+}
+.teal-text .fa-circle{
+  color:green !important;
+  margin-right:10px;
+}
+blockquote{
+  border-left:none !important;
+}
+nav ul a:hover{
+    color:white !important;
+}
+nav ul a:active{
+    color:white !important;
+}

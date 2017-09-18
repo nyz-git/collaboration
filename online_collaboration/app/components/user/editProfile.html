@@ -1,0 +1,108 @@
+<div class="left-padding">
+    <div class="row">
+        <div class="col s8 m8 offset-m2 offset-s2">
+            <div class="card grey lighten-3 hoverable">
+                <div class="card-content grey-text text-darken-1">
+                    <div class="row">
+                        <div align="center">
+                            <span class="latest blue-grey-text text-darken-2">Edit Profile</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div align="center">
+                            <img src="assets/img/{{userCtrl.customer.profileId}}" class="img-circle materialboxed" alt="Cinque Terre" width="200" height="200">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="file-field input-field col s8 m8 offset-m2 offset-s2">
+                                <div class="waves-effect waves-light btn blue-grey lighten-4 blue-grey-text text-darken-2 hoverable">
+                                    <span>Upload</span>
+                                    <input type="file" file-model="userCtrl.picture">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload Profile Picture">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 offset-s4">
+                        <button class="btn blue-grey lighten-4 blue-grey-text text-darken-2 hoverable waves-effect waves-light" ng-click="userCtrl.uploadFile()">Change Picture</button>
+                        </div>
+                    </div>
+                    <form name="userForm" ng-submit="userCtrl.submit()" novalidate>
+                        <div class="row">
+                            <div class="input-field col m6 s6 offset-m3 offset-s3">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="username" name="username" type="text" class="validate" ng-model="userCtrl.client.username">
+                                <label for="firstName">Username</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m6 s6 offset-m3 offset-s3">
+                                <i class="material-icons prefix">perm_identity</i>
+                                <input id="role" name="role" type="text" class="validate" ng-model="userCtrl.client.role">
+                                <label for="username">Role</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="firstName" name="firstName" type="text" class="validate" ng-minlength="2" ng-maxlength="8" ng-model="userCtrl.client.firstName"
+                                    required>
+                                <p ng-show="userForm.firstName.$error.minlength" class="help-block red-text text-accent-4">*First name is too short.</p>
+                                <p ng-show="userForm.firstName.$error.maxlength" class="help-block red-text text-accent-4">*First name is too long.</p>
+                                <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block red-text text-accent-4">*Name is required.</p>
+                                <label for="firstName">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">assignment_ind</i>
+                                <input id="lastName" name="lastName" type="text" class="validate" ng-minlength="2" ng-maxlength="8" ng-model="userCtrl.client.lastName"
+                                    required>
+                                <p ng-show="userForm.lastName.$error.minlength" class="help-block red-text text-accent-4">*Last name is too short.</p>
+                                <p ng-show="userForm.lastName.$error.maxlength" class="help-block red-text text-accent-4">*Last name is too long.</p>
+                                <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block red-text text-accent-4">*Name is required.</p>
+                                <label for="lastName">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">perm_identity</i>
+                                <input id="gender" name="gender" type="text" class="validate" ng-model="userCtrl.client.gender">
+                                <label for="username">Gender</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" name="email" type="email" class="validate" name="email" ng-model="userCtrl.client.emailId">
+                                <p ng-show="!userForm.email.$pristine" class="help-block red-text text-accent-4">*Enter a valid email.</p>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="password" type="password" class="validate" ng-minlength="3" ng-maxlength="8" ng-required name="password" ng-model="userCtrl.client.password"
+                                />
+                                <p ng-show="userForm.password.$error.minlength" class="help-block red-text text-accent-4">*Password is too short.</p>
+                                <p ng-show="userForm.password.$error.maxlength" class="help-block red-text text-accent-4">*Password is too long.</p>
+                                <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block red-text text-accent-4">*Password is required.</p>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="confirmPassword" type="password" class="validate" name="confirmPassword" ng-model="userCtrl.client.confirmPassword"
+                                    ng-required>
+                                <p ng-show="userForm.confirmPassword.$invalid && !userForm.confirmPassword.$pristine" class="help-block red-text text-accent-4">*Re-Password is required.</p>
+                                <label for="confirmPassword">Re-Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <span class="blue-grey lighten-4">
+                        <button class="waves-effect waves-light btn col s12 blue-grey lighten-4 blue-grey-text text-darken-2 hoverable" ng-disabled="userForm.$invalid" type="submit">Update Profile</button>
+                        </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
